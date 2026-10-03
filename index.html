@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="gaOlKEVAPZcKhvZhkSH83-0HENv8C9dC4RJi6jJyBXU" />
+   <title>BarPas - Barudak Pasirpirin</title>
+    <style>
+         /* --- 1. VARIABEL WARNA ELEGAN (LUXURY THEMING) --- */
+        :root {
+              /* Memanggil nama file gambar Anda */
+    background-image: url('jagabaya.png'); 
+    
+    /* Membuat gambar memenuhi seluruh layar dan tidak terpotong */
+    background-size: cover; 
+    
+    /* Membuat posisi gambar selalu pas berada di tengah-tengah layar */
+    background-position: center; 
+    
+    /* Membuat gambar background tetap diam saat halaman di-scroll ke bawah */
+    background-attachment: fixed; 
+    
+    /* Mencegah gambar berulang-ulang jika ukurannya terlalu kecil */
+    background-repeat: no-repeat; 
+    
+    /* Warna cadangan jika gambar gagal dimuat akibat internet lambat */
+    background-color: #0d0d0d; 
+    
+    color: #ffffff; /* Warna teks utama tetap putih agar terbaca */
+     }      
+        /* --- 1. VARIABEL WARNA ELEGAN (LUXURY THEMING) --- */
+        :root {
+                       --bg-surface: #17171c;    /* Warna permukaan kotak/kartu */
+            --accent-gold: #ff6600;   /* Warna emas/oranye mewah untuk aksen */
+            --accent-orange: #ffffff; /* Warna BarPas Anda */
+            --text-primary: #f5f5f7;  /* Teks utama (putih pudar) */
+            --text-muted: #f8f8fc;    /* Teks sekunder (abu-abu halus) */
+            --border-color: #ff6600;  /* Garis pembatas halus */
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', system-ui, sans-serif;
+        }
+
+        /* --- 2. RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.2;
+            overflow-x: hidden;
+        }
+
+        /* --- 3. NAVIGATION (RESPONSIF HP) --- */
+        nav.top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10%;
+            border-bottom: px solid var(--border-color);
+            background-color: rgba(1, 82, 1, 0.9);
+            backdrop-filter: blur(50px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav.top-nav .logo {
+            font-family: var(--font-serif);
+            font-size: 5rem;
+            font-weight: bold;
+            letter-spacing: 10px;
+            color: var(--text-primary);
+        }
+
+        nav.top-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        nav.top-nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav.top-nav ul li a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 60vh;
+            padding: 40px 20px;
+            background: radial-gradient(circle at center, #1e1e26 0%, var(--bg-dark) 70%);
+        }
+
+        .story-badge {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            border: 5px solid var(--accent-gold);
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: 1000;
+            display: inline-block;
+        }
+
+        /* CONTAINER DUA KOLOM MEWAH DI PC, SATU KOLOM DI HP */
+        .media-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 0.5px;
+        }
+
+        .media-box {
+            width: 100%;
+            max-width: 500px;
+            border: 5px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(255, 102, 0, 0.2);
+        }
+
+        /* Pengaturan agar video responsif 100% mengikuti HP */
+        .media-box video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Pengaturan agar gambar responsif 100% mengikuti HP */
+        .media-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* --- 5. INTERACTIVE SLIDER SECTION --- */
+        .slider-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px 20px;
+            background-color: var(--bg-surface);
+            border-radius: 15px;
+            border: 3px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(1, 82, 1, 0.3);
+            text-align: center;
+        }
+
+        .slide p {
+            color: var(--text-muted);
+            font-size: 0.5rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* --- ALUR PROSES KOREKSI RESPONSIF --- */
+        .proses-box {
+            display: flex;
+            flex-wrap: wrap; /* Otomatis turun rapi ke bawah jika layar HP sempit */
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .step {
+            background-color: rgba(255, 102, 0, 0.1);
+            color: var(--accent-gold);
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 102, 0, 0.3);
+        }
+
+        .panah {
+            color: var(--text-muted);
+        }
+
+        /* --- 6. BOTTOM NAVIGATION (FOOTER) --- */
+        nav.bottom-nav {
+            border-top: 3px solid var(--border-color);
+            background-color: rgba(1, 82, 1, 0.9);
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- 7. RESPONSIVE MEDIA QUERIES (ATURAN KHUSUS LAYAR HP) --- */
+        @media (min-width: 768px) {
+            .media-container {
+                flex-direction: row; /* Di laptop/PC, video dan gambar berjejer ke samping */
+                justify-content: center;
+            }
+            .media-box {
+                width: 48%; /* Bagi ruang seimbang saat layar lebar */
+            }
+            nav.top-nav 
+           { padding: 15px 8%;}
+        }
+        @media (max-width: 600px) {
+            nav.top-nav {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            nav.top-nav ul {
+                gap: 20px;
+            }
+            .slider-container {
+                margin: 20px 15px;
+                padding: 20px 15px;
+            }
+            .proses-box {
+                font-size: 0.8rem;
+                gap: 5px;
+            }
+            .step {
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGASI ATAS ELEGAN -->
+    <nav class="top-nav">
+        <div class="logo">BarPas</div>
+        <ul>
+             <li><a href="index.html">Beranda</a></li>
+            <li><a href="cerita.html">Cerita</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <span class="story-badge">Barudak Pasirpirin</span>
+        
+        <!-- Wadah Media (Video & Gambar Berdampingan di PC, Menyusun ke Bawah di HP) -->
+        <div class="media-container">
+            <!-- Box Video -->
+            <div class="media-box">
+                <video controls autoplay muted loop>
+                    <source src="BarPas.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video ini.
+                </video>
+            </div>
+            <!-- Box Gambar Studio -->
+            <div class="media-box">
+                <img src="barpas makanan.jpeg" alt="Studio BarPas">
+            </div>
+              </header>
+
+    <!-- KONTEN UTAMA DENGAN ALUR PROSES BERSIH -->
+    <main class="slider-container">
+        <div class="slide">
+           <center> 
+                Barpas, sekaligus menjadi wadah untuk membangun sesuatu dari lingkungan dan kemampuan yang tersedia. 
+                Barpas tidak dibangun dengan gagasan bahwa semua harus langsung sempurna. Barpas dibangun melalui proses:
+            
+            </<center>
+            <!-- Alur Proses Sudah Diperbaiki Kerapian dan Typo "MANDIRI" -->
+            <div class="proses-box">
+                <span class="step">MANDIRI</span> <span class="panah">→</span>
+                <span class="step">MENGALAMI</span> <span class="panah">→</span>
+                <span class="step">MENGUJI</span> <span class="panah">→</span>
+                <span class="step">BELAJAR</span> <span class="panah">→</span>
+                <span class="step">MEMBANGUN</span> <span class="panah">→</span>
+                <span class="step">MENGOREKSI</span> <span class="panah">→</span>
+                <span class="step">LANJUT</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER ALAMAT -->
+    <nav class="bottom-nav">
+        📍 <span>Alamat: Jln. Karanglayung Kamp. Sukamahi Rt.16 Rw.005 Desa Cijulang Kec. Cineam Kab. Tasikmalaya</span>
+    </nav>
+
+</body>
+
+
+
+</body>
+</html>
