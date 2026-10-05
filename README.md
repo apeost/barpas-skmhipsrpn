@@ -13,6 +13,3 @@ Lokasi Studio
 Link Website Publik
 Akses website resmi kami yang sudah aktif di:
 👉 ([https://github.io](https://apeost.github.io/barpas-skmhipsrpn/)
-
----
-*Dikelola dengan bangga oleh Barudak Pasirpirin.*
