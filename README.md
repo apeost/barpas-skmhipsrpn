@@ -1,7 +1,5 @@
 BarPas - Barudak Pasirpirin
 
-<img src="logo barPas.png" alt="Logo BarPas" width="100">
-
 Selamat datang di website BarPas (Barudak Pasirpirin)
 
 Tentang BarPas
