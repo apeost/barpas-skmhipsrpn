@@ -79,7 +79,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap:5px;
         }
 
         nav ul li a {
@@ -252,18 +252,62 @@
                 text-align: center;
             }
             nav.top-nav ul {
-                gap: 10px;
+                gap: 20px;
             }
             .slider-container {
-                margin:15px 35px;
-                padding: 15px 35px;
+                margin: 20px 15px;
+                padding: 20px 15px;
             }
             .proses-box {
                 font-size: 0.8rem;
-                gap: 2px;
+                gap: 5px;
             }
             .step {
                 padding: 4px 8px;
+            }
+            /* --- 6. ELEGANT BUTTONS --- */
+        .slider-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-primary);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #f1c40f;
+            transform: translateY(-2px);
+        }
+
+        /* --- 7. ANIMATION --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
 
         }
     </style>
