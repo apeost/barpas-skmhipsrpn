@@ -1,7 +1,6 @@
 BarPas - Barudak Pasirpirin
 
 Selamat datang di website BarPas (Barudak Pasirpirin)
-
 Tentang BarPas
 Barpas dibangun bukan dengan gagasan bahwa semua harus langsung sempurna sejak awal. Kami bergerak dan berkembang bersama lingkungan sekitar melalui proses bertahap:
 **MANDIRI → MENGALAMI → MENGUJI → BELAJAR → MEMBANGUN → MENGOREKSI → LANJUT**
