@@ -95,238 +95,126 @@
         nav.top-nav ul li a:hover {
             color: var(--accent-gold);
         }
-
-        /* --- 4. HERO SECTION --- */
-        .hero {
+        }
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .row-title {
+            font-size: 1.5rem;
+            margin: 25px 0 10px 0;
+            padding-left: 5px;
+            border-left: 4px solid #ff4757; /* Aksen merah */
+        }
+        /* Style Kotak Geser */
+        .slider-row {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: 60vh;
-            padding: 40px 20px;
-            background: radial-gradient(circle at center, #1e1e26 0%, var(--bg-dark) 70%);
+            gap: 15px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding-bottom: 15px;
+            -webkit-overflow-scrolling: touch;
         }
-
-        .story-badge {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-gold);
-            border: 2px solid var(--accent-gold);
-            padding: 6px 20px;
-            border-radius: 50px;
-            margin-bottom: 25px;
-            font-weight: 600;
-            display: inline-block;
+        .slider-row::-webkit-scrollbar {
+            height: 8px;
         }
-
-        /* CONTAINER DUA KOLOM MEWAH DI PC, SATU KOLOM DI HP */
-        .media-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            width: 100%;
-            max-width: 1000px;
-            margin-top: 10px;
-        }
-
-        .media-box {
-            width: 100%;
-            max-width: 500px;
-            border: 2px solid var(--border-color);
+        .slider-row::-webkit-scrollbar-thumb {
+            background: #333;
             border-radius: 10px;
+        }
+        .slider-row::-webkit-scrollbar-thumb:hover {
+            background: #ff4757;
+        }
+        /* Item di dalam slider */
+        .slide-item {
+            flex: 0 0 300px; /* Lebar kotak */
+            height: 200px;   /* Tinggi kotak */
+            background-color: #1e1e1e;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.2);
+            scroll-snap-align: start;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
         }
-
-        /* Pengaturan agar video responsif 100% mengikuti HP */
-        .media-box video {
-            width: 100%;
-            height: auto;
-            display: block;
+        .slide-item:hover {
+            transform: scale(1.02);
         }
-
-        /* Pengaturan agar gambar responsif 100% mengikuti HP */
-        .media-box img {
+        /* Pengaturan ukuran video & foto */
+        .slide-item video, .slide-item img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
             object-fit: cover;
+            display: block;
         }
-
-        /* --- 5. INTERACTIVE SLIDER SECTION --- */
-        .slider-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 30px 20px;
-            background-color: var(--bg-surface);
-            border-radius: 15px;
-            border: 3px solid var(--border-color);
-            box-shadow: 0 4px 20px rgba(1, 82, 1, 0.3);
-            text-align: center;
-        }
-
-        .slide p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        /* --- ALUR PROSES KOREKSI RESPONSIF --- */
-        .proses-box {
-            display: flex;
-            flex-wrap: wrap; /* Otomatis turun rapi ke bawah jika layar HP sempit */
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .step {
-            background-color: rgba(255, 102, 0, 0.1);
-            color: var(--accent-gold);
-            padding: 6px 12px;
-            border-radius: 4px;
-            border: 1px solid rgba(255, 102, 0, 0.3);
-        }
-
-        .panah {
-            color: var(--text-muted);
-        }
-
-        /* --- 6. BOTTOM NAVIGATION (FOOTER) --- */
-        nav.bottom-nav {
-            border-top: 3px solid var(--border-color);
-            background-color: rgba(1, 82, 1, 0.9);
-            padding: 15px 20px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* --- 7. RESPONSIVE MEDIA QUERIES (ATURAN KHUSUS LAYAR HP) --- */
-        @media (min-width: 768px) {
-            .media-container {
-                flex-direction: row; /* Di laptop/PC, video dan gambar berjejer ke samping */
-                justify-content: center;
-            }
-            .media-box {
-                width: 48%; /* Bagi ruang seimbang saat layar lebar */
-            }
-            nav.top-nav 
-           { padding: 15px 8%;}
-        }
+        /* Responsif HP */
         @media (max-width: 600px) {
-            nav.top-nav {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
+            .slide-item {
+                flex: 0 0 250px;
+                height: 160px;
             }
-            nav.top-nav ul {
-                gap: 20px;
+            .row-title {
+                font-size: 1.2rem;
             }
-            .slider-container {
-                margin: 20px 15px;
-                padding: 20px 15px;
-            }
-            .proses-box {
-                font-size: 0.8rem;
-                gap: 5px;
-            }
-            .step {
-                padding: 4px 8px;
-            }
-            /* --- 6. ELEGANT BUTTONS --- */
-        .slider-buttons {
-            margin-top: 35px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        button {
-            padding: 12px 28px;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            border-radius: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--text-primary);
-        }
-
-        .btn-primary {
-            background-color: var(--accent-gold);
-            color: var(--bg-dark);
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #f1c40f;
-            transform: translateY(-2px);
-        }
-
-        /* --- 7. ANIMATION --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGASI ATAS ELEGAN -->
-    <nav class="top-nav">
-        <div class="logo">Galeri</div>
-        <ul>
-            <li><a href="index.html">Beranda</a></li>
-            <li><a href="cerita.html">Cerita</a></li>
-            <li><a href="galeri.html">Galeri</a></li>
-            <li><a href="kontak.html">Kontak</a></li>
-        </ul>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <span class="story-badge">Barudak Pasirpirin</span>
+    <div class="gallery-container">
         
-        <!-- Wadah Media (Video & Gambar Berdampingan di PC, Menyusun ke Bawah di HP) -->
-        <div class="media-container">
-            <!-- Box Video -->
-            <div class="media-box">
-                <video controls autoplay muted loop>
-                    <source src="pembeli.mp4" type="video/mp4">
-                    Browser Anda tidak mendukung tag video ini.
+        <!-- BARIS PERTAMA: SLIDE VIDEO -->
+        <h2 class="row-title">🎬 Video Kegiatan BarPas</h2>
+        <div class="slider-row">
+            <!-- Video 1 -->
+            <div class="slide-item">
+                <video controls>
+                    <source src="pembeli.mp4">
+                    Browser Anda tidak mendukung pemutar video.
                 </video>
             </div>
-            <!-- Box Gambar Studio -->
-            <div class="media-box">
-                <img src="halaL.jpg" alt="Studio BarPas">
+            <!-- Video 2 -->
+            <div class="slide-item">
+                <video controls>
+                    <source src="video-barpas-2.mp4" type="video/mp4">
+                </video>
+            </div>
+            <!-- Video 3 -->
+            <div class="slide-item">
+                <video controls>
+                    <source src="video-barpas-3.mp4" type="video/mp4">
+                </video>
+            </div>
+            <!-- Video 4 -->
+            <div class="slide-item">
+                <video controls>
+                    <source src="video-barpas-4.mp4" type="video/mp4">
+                </video>
             </div>
         </div>
-    </header>
 
-    <!-- KONTEN UTAMA DENGAN ALUR PROSES BERSIH -->
-    <main class="slider-container">
-        <div class="slide">
-            <p>
-                <center>  </center> 
-       </main>
+        <!-- BARIS KEDUA: SLIDE FOTO -->
+        <h2 class="row-title">📸 Galeri Foto & MieSalna</h2>
+        <div class="slider-row">
+            <!-- Foto 1 -->
+            <div class="slide-item">
+                <img src="foto-miesalna-1.jpg" alt="MieSalna Olahan">
+            </div>
+            <!-- Foto 2 -->
+            <div class="slide-item">
+                <img src="foto-barpas-2.jpg" alt="Kumpul BarPas">
+            </div>
+            <!-- Foto 3 -->
+            <div class="slide-item">
+                <img src="foto-miesalna-3.jpg" alt="Produk MieSalna">
+            </div>
+            <!-- Foto 4 -->
+            <div class="slide-item">
+                <img src="foto-barpas-4.jpg" alt="Kegiatan Komunitas">
+            </div>
+        </div>
+
+    </div>
 
 </body>
-
 </html>
