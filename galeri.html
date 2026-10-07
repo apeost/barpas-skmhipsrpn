@@ -73,8 +73,7 @@
             --font-sans: 'Inter', system-ui, sans-serif;
         }
 
-    
-            body {
+             body {
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -213,23 +212,31 @@
 
     <div class="slider-container">
         <!-- Wrapper Slide -->
-       
         <div class="slider-wrapper" id="sliderWrapper">
             
             <!-- Slide 1: Foto -->
             <div class="slide">
-                <img src="halaL.jpg" alt="label hala1">
-                        </div>
+                <img src="halaL.jpg" alt="real">
+                <div class="caption">Survei Label Halal</div>
+            </div>
 
-                       <!-- Slide 2: Foto -->
+            <!-- Slide 2: Foto -->
             <div class="slide">
-                <img src="miesalnareal.jpg" alt="penjualan">
-                            </div>
+                <img src="miesalnareal.jpg" alt=real">
+                <div class="caption">miesalna</div>
+            </div>
+           
+            <!-- Slide 3: Foto -->
+            <div class="slide">
+                <img src="experimen.jpg" alt="experiment">
+                <div class="caption">tes ketahanan produk</div>
+            </div>
 
-            <!-- Slide 3: foto -->
+            <!-- Slide 4: Video -->
             <div class="slide">
-                <img src="experimen.jpg" alt="penjualan">
-                            </div>
+                <video src="pembeli.mp4" loop muted playsinline></video>
+                <div class="caption">dokumentasi</div>
+            </div>
 
         </div>
 
@@ -242,7 +249,14 @@
     </div>
 
     <script>
-       
+        const wrapper = document.getElementById('sliderWrapper');
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.getElementById('dotsContainer');
+        
+        let currentIndex = 0;
+        let slideInterval;
+        const intervalTime = 5000; // Waktu putar otomatis (5 detik)
+
         // Membuat titik indikator secara dinamis sesuai jumlah slide
         slides.forEach((_, index) => {
             const dot = document.createElement('span');
@@ -254,7 +268,20 @@
 
         const dots = document.querySelectorAll('.dot');
 
-             }
+        // Fungsi mengatur media (putar video jika slide aktif, pause jika tidak)
+        function handleMedia(index) {
+            slides.forEach((slide, i) => {
+                const video = slide.querySelector('video');
+                if (video) {
+                    if (i === index) {
+                        video.currentTime = 0;
+                        video.play().catch(error => console.log("Autoplay video tertahan browser"));
+                    } else {
+                        video.pause();
+                    }
+                }
+            });
+        }
 
         // Fungsi memperbarui posisi slider
         function updateSlider() {
@@ -264,6 +291,8 @@
             dots.forEach(dot => dot.classList.remove('active'));
             dots[currentIndex].classList.add('active');
 
+            // Jalankan video jika ada di slide saat ini
+            handleMedia(currentIndex);
         }
 
         // Navigasi tombol kiri/kanan
@@ -284,13 +313,7 @@
             updateSlider();
             resetTimer();
         }
-
-        // Fitur Jalan Otomatis (Autoplay)
-        function startTimer() {
-            slideInterval = setInterval(() => {
-                moveSlide(1);
-            }, intervalTime);
-        }
+       
 
         function resetTimer() {
             clearInterval(slideInterval);
