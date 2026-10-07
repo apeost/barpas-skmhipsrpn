@@ -29,6 +29,37 @@
     
     color: #ffffff; /* Warna teks utama tetap putih agar terbaca */
             }
+      <!DOCTYPE html>
+<html lang="id">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="2-Klb80tMvBDe_wYjErNAhDr6tYnyNWar053lMtBPEQ" />
+     <link rel="icon" type="image/png" href="logo barPas.png">
+    <title>BarPas - Barudak Pasirpirin</title>
+    <style>
+         /* --- 1. VARIABEL WARNA ELEGAN (LUXURY THEMING) --- */
+        :root {
+              /* Memanggil nama file gambar Anda */
+    background-image: url('jagabaya.png'); 
+    
+    /* Membuat gambar memenuhi seluruh layar dan tidak terpotong */
+    background-size: cover; 
+    
+    /* Membuat posisi gambar selalu pas berada di tengah-tengah layar */
+    background-position: center; 
+    
+    /* Membuat gambar background tetap diam saat halaman di-scroll ke bawah */
+    background-attachment: fixed; 
+    
+    /* Mencegah gambar berulang-ulang jika ukurannya terlalu kecil */
+    background-repeat: no-repeat; 
+    
+    /* Warna cadangan jika gambar gagal dimuat akibat internet lambat */
+    background-color: #0d0d0d; 
+    
+    color: #ffffff; /* Warna teks utama tetap putih agar terbaca */
+            }
         /* --- 1. VARIABEL WARNA ELEGAN (LUXURY THEMING) --- */
         :root {
         
@@ -42,15 +73,9 @@
             --font-sans: 'Inter', system-ui, sans-serif;
         }
 
-      {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
+    
+            body {
             font-family: Arial, sans-serif;
-            background-color: #111;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -65,7 +90,7 @@
             margin: auto;
             overflow: hidden;
             border-radius: 10px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 50px rgba(0,0,0,0.5);
         }
 
         /* Wrapper untuk Geser Slide */
@@ -79,8 +104,7 @@
         .slide {
             min-width: 100%;
             position: relative;
-            background: #000;
-            /* Mengatur Aspek Rasio Video/Foto (16:9) */
+         /* Mengatur Aspek Rasio Video/Foto (16:9) */
             aspect-ratio: 16 / 9; 
             display: flex;
             justify-content: center;
@@ -193,21 +217,21 @@
             
             <!-- Slide 1: Foto -->
             <div class="slide">
-                <img src="https://unsplash.com" alt="Foto Tempat Wisata 1">
-                <div class="caption">Deskripsi Foto Indah 1</div>
+                <img src="halaL.jpg" alt="Foto Tempat Wisata 1">
+                <div class="Label Halal">label Halal</div>
             </div>
 
             <!-- Slide 2: Video -->
             <div class="slide">
                 <!-- Gunakan muted agar video bisa diputar otomatis di browser saat ini -->
-                <video src="https://w3schools.com" loop muted playsinline></video>
-                <div class="caption">Deskripsi Video Animasi 2</div>
+                <video src="pembeli.mp4" loop muted playsinline></video>
+                <div class="Rekayasa Penjualan">Video</div>
             </div>
 
             <!-- Slide 3: Foto -->
             <div class="slide">
-                <img src="https://unsplash.com" alt="Foto Tempat Wisata 2">
-                <div class="caption">Deskripsi Foto Indah 3</div>
+                <img src="" alt="penjualan">
+                <div class="rekayasa">Deskripsi Foto Indah 3</div>
             </div>
 
             <!-- Slide 4: Video -->
