@@ -257,7 +257,7 @@
         
         let currentIndex = 0;
         let slideInterval;
-        const intervalTime = 5000; // Waktu putar otomatis (5 detik)
+        const intervalTime = 100000; // Waktu putar otomatis (5 detik)
 
         // Membuat titik indikator secara dinamis sesuai jumlah slide
         slides.forEach((_, index) => {
@@ -277,7 +277,7 @@
                 if (video) {
                     if (i === index) {
                         video.currentTime = 0;
-                    
+                     video.play().catch(error => console.log("Autoplay video tertahan browser"));
                     } else {
                         video.pause();
                     }
