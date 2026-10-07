@@ -276,8 +276,8 @@
                 const video = slide.querySelector('video');
                 if (video) {
                     if (i === index) {
-                        video.currentTime =30minute;
-                        video.play().catch(error => console.log("Autoplay video tertahan browser"));
+                        video.currentTime = 0;
+                    
                     } else {
                         video.pause();
                     }
