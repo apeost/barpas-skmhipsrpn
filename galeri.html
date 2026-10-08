@@ -29,17 +29,15 @@
     
     color: #ffffff; /* Warna teks utama tetap putih agar terbaca */
             
-               /* --- 1. VARIABEL WARNA ELEGAN (LUXURY THEMING) --- */
-        :root {
-        
             --bg-surface: #17171c;    /* Warna permukaan kotak/kartu */
-            --accent-gold: #ff6600;   /* Warna emas/oranye mewah untuk aksen */
+            --accent-gold: #ff6600;   /* Warna emas mewah untuk aksen */
             --accent-orange: #ffffff; /* Warna BarPas Anda */
             --text-primary: #f5f5f7;  /* Teks utama (putih pudar) */
             --text-muted: #f8f8fc;    /* Teks sekunder (abu-abu halus) */
             --border-color: #ff6600;  /* Garis pembatas halus */
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-sans: 'Inter', system-ui, sans-serif;
+        }
 
         /* --- 2. RESET & BASE STYLES --- */
         * {
@@ -52,7 +50,7 @@
             background-color: var(--bg-dark);
             color: var(--text-primary);
             font-family: var(--font-sans);
-            line-height: auto;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
@@ -94,186 +92,290 @@
 
         nav ul li a:hover {
             color: var(--accent-gold);
-        }  
- 
-        /* Container Utama Slider */
-        .slider-container {
-            position: relative;
-            width: 90%;
-            max-width: 1000px; /* Maksimal lebar di PC */
-            margin: auto;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 8px 50px rgba(0,0,0,0.5);
         }
 
-        /* Wrapper untuk Geser Slide */
-        .slider-wrapper {
+        /* --- 4. HERO SECTION --- */
+        .hero {
             display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 30vh;
+            padding:30px;
+            background: radial-gradient(circle at center, #1e1e26 0%, var(--bg-dark) 70%);
+            /* Mengatur gambar di dalam slide agar rapi dan proporsional */
+}
+        .story-badge {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing:1px;
+            color: var(--accent-gold);
+            border: 10px solid var(--accent-gold);
+            padding: 2px 50px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-weight: 1000;
+
+/* Animasi memunculkan huruf */
+@keyframes mengetik {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Animasi garis ketik berkedip */
+@keyframes kedip {
+    50% { border-color: transparent; }
+}
+            
         }
 
-        /* Elemen Tiap Slide */
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 100;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            max-width: 800px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            max-width: 800px;
+            margin-bottom:1px;
+            
+        }
+/* Pengaturan agar gambar responsif 100% mengikuti HP */
+        .media img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* --- 5. INTERACTIVE SLIDER SECTION --- */
+        .slider-container {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 80px;
+            background-color: var(--bg-surface);
+            border-radius: 20px;
+            border: 10px solid var(--border-color);
+            box-shadow: rgba(1, 82, 1, 0.9);
+            text-align: justify;
+             font-size: 0.8rem;
+        }
+         .slide p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
         .slide {
-            min-width: 100%;
-            position: relative;
-         /* Mengatur Aspek Rasio Video/Foto (16:9) */
-            aspect-ratio: 16 / 9; 
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .slide h2 {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+        }
+
+        
+        /* --- 6. ELEGANT BUTTONS --- */
+        .slider-buttons {
+            margin-top: 35px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            gap: 10px;
         }
 
-      
-        /* RESPONSIVE CSS UNTUK TAMPILAN HP */
-        @media screen and (max-width: 768px) {
+        button {
+            padding: 12px 28px;
+            font-size: 0.8;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-primary);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #f1c40f;
+            transform: translateY(-2px);
+        }
+
+        /* --- 7. ANIMATION --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+              }
+           /* --- 7. RESPONSIVE MEDIA QUERIES (ATURAN KHUSUS LAYAR HP) --- */
+        @media (min-width: 768px) {
+            .media-container {
+                flex-direction: row; /* Di laptop/PC, video dan gambar berjejer ke samping */
+                justify-content: center;
+            }
+            .media-box {
+                width: 48%; /* Bagi ruang seimbang saat layar lebar */
+            }
+            nav.top-nav 
+           { padding: 15px 8%;}
+        }
+        @media (max-width: 600px) {
+            nav.top-nav {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            nav.top-nav ul {
+                gap: 20px;
+            }
             .slider-container {
-                width: 95%;
+                margin: 20px 15px;
+                padding: 20px 15px;
             }
-            .nav-btn {
-                padding: 10px;
-                font-size: 14px;
-                width: 35px;
-                height: 35px;
+            .proses-box {
+                font-size: 0.8rem;
+                gap: 5px;
             }
-            .prev { left: 5px; }
-            .next { right: 5px; }
-            .caption {
-                font-size: 11px;
-                bottom: 10px;
-                left: 10px;
+            .step {
+                padding: 4px 8px;
             }
-            .dot {
-                height: 8px;
-                width: 8px;
-            }
+            /* --- 6. ELEGANT BUTTONS --- */
+        .slider-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-primary);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #f1c40f;
+            transform: translateY(-2px);
+        }
+
+        /* --- 7. ANIMATION --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+
         }
     </style>
-     <!-- NAVIGASI ATAS ELEGAN -->
-    <nav class="top-nav">
-        <div class="logo">BarPas</div>
+</head>
+
+<body>
+
+    <!-- NAVIGASI ELEGAN -->
+      <nav>
+        <div>BarPas</div>
         <ul>
-             <li><a href="index.html">Beranda</a></li>
+            <li><a href="index.html">Beranda</a></li>
             <li><a href="cerita.html">Cerita</a></li>
             <li><a href="galeri.html">Galeri</a></li>
             <li><a href="kontak.html">Kontak</a></li>
-        </ul>
-    </nav>
-
-    <div class="slider-container">
-        <!-- Wrapper Slide -->
-        <div class="slider-wrapper" id="sliderWrapper">
-            
-            <!-- Slide 1: Foto -->
-            <div class="slide">
-                <img src="halaL.jpg" alt="real">
-                <div class="caption">Survei Label Halal</div>
-            </div>
-
-            <!-- Slide 2: Foto -->
-            <div class="slide">
-                <img src="miesalnareal.jpg" alt=real">
-                <div class="caption">miesalna</div>
-            </div>
+        </ul> 
            
-            <!-- Slide 3: Foto -->
-            <div class="slide">
-                <img src="experimen.jpg" alt="experiment">
-                <div class="caption">tes ketahanan produk</div>
-            </div>
+    </nav>
+  
 
-            <!-- Slide 4: Video -->
-            <div class="slide">
-                <video src="pembeli.mp4" loop muted playsinline></video>
-                <div class="caption">dokumentasi</div>
-            </div>
-
-        </div>
-
-        <!-- Tombol Navigasi -->
-        <button class="nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="nav-btn next" onclick="moveSlide(1)">&#10095;</button>
-
-        <!-- Indikator Titik -->
-        <div class="dots-container" id="dotsContainer"></div>
-    </div>
-
-    <script>
-        const wrapper = document.getElementById('sliderWrapper');
-        const slides = document.querySelectorAll('.slide');
-        const dotsContainer = document.getElementById('dotsContainer');
+    <!-- WADAH SLIDE INTERAKTIF -->
+    <main class="slider-container">
         
-        let currentIndex = 0;
-        let slideInterval;
-        const intervalTime = 5000; // Waktu putar otomatis (5 detik)
+        <div class="slide active">
+           <center><h2> <b>GALERY</b></h2></center>
+     <picture>
+    <!-- Jika lebar layar minimal 768px (Laptop/Tablet), tampilkan gambar besar -->
+    <source media="(min-width: 768px)" srcset="logo barPas.png">
+    
+    <!-- Jika layar di bawah 768px (HP), otomatis pakai gambar kecil ini -->
+    <img src="logobarPas.png" alt="Gambar Responsif" style="width: auto; max-width: 100%;">
+</picture>
 
-        // Membuat titik indikator secara dinamis sesuai jumlah slide
-        slides.forEach((_, index) => {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(index));
-            dotsContainer.appendChild(dot);
+       
+        <!-- Tombol Navigasi -->
+        <div class="slider-buttons">
+            <button class="btn-outline" id="prevBtn">Kembali</button>
+            <button class="btn-primary" id="nextBtn">Lanjutkan</button>
+        </div>
+        
+    </main>
+ 
+</nav>
+    <!-- LOGIKA JAVASCRIPT (DI DALAM HTML AGAR LANGSUNG BERJALAN) -->
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlideIndex = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentSlideIndex++;
+            if (currentSlideIndex >= slides.length) {
+                currentSlideIndex = 0;
+            }
+            showSlide(currentSlideIndex);
         });
 
-        const dots = document.querySelectorAll('.dot');
-
-        // Fungsi mengatur media (putar video jika slide aktif, pause jika tidak)
-        function handleMedia(index) {
-            slides.forEach((slide, i) => {
-                const video = slide.querySelector('video');
-                if (video) {
-                    if (i === index) {
-                        video.currentTime = 0;
-                        video.play().catch(error => console.log("Autoplay video tertahan browser"));
-                    } else {
-                        video.pause();
-                    }
-                }
-            });
-        }
-
-        // Fungsi memperbarui posisi slider
-        function updateSlider() {
-            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            // Perbarui dot aktif
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[currentIndex].classList.add('active');
-
-            // Jalankan video jika ada di slide saat ini
-            handleMedia(currentIndex);
-        }
-
-        // Navigasi tombol kiri/kanan
-        function moveSlide(direction) {
-            currentIndex += direction;
-            if (currentIndex >= slides.length) {
-                currentIndex = 0;
-            } else if (currentIndex < 0) {
-                currentIndex = slides.length - 1;
+        prevBtn.addEventListener('click', () => {
+            currentSlideIndex--;
+            if (currentSlideIndex < 0) {
+                currentSlideIndex = slides.length - 1;
             }
-            updateSlider();
-            resetTimer();
-        }
-
-        // Navigasi lewat klik titik bulat
-        function goToSlide(index) {
-            currentIndex = index;
-            updateSlider();
-            resetTimer();
-        }
-       
-
-        function resetTimer() {
-            clearInterval(slideInterval);
-            startTimer();
-        }
-
-        // Inisialisasi awal saat halaman dimuat
-        handleMedia(currentIndex);
-        startTimer();
+            showSlide(currentSlideIndex);
+        });
     </script>
-</body>
-</html>
